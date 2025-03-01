@@ -8,7 +8,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      {/* Hamburger icon to open sidebar */}
+      {/* Hamburger Icon (Only Show When Sidebar is Closed) */}
       {!isOpen && (
         <button className="sidebar-toggle" onClick={() => setIsOpen(true)}>
           <Menu size={28} />

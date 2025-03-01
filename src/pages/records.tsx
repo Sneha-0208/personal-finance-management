@@ -78,21 +78,22 @@ const Records: React.FC = () => {
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border p-2">Name</th>
+            <th className="border p-2">Type</th>
             <th className="border p-2">Date</th>
             <th className="border p-2">Category</th>
             <th className="border p-2">Amount</th>
-            <th className="border p-2">Type</th>
+            <th className="border p-2">Account</th>
           </tr>
         </thead>
         <tbody>
           {transactions.map((tx) => (
             <tr key={tx.id}>
-              <td className="border p-2">{tx.name}</td>
+              <td className={`border p-2 ${tx.type === "Income" ? "text-green-600" : "text-red-600"}`}>{tx.type}</td>
               <td className="border p-2">{tx.date}</td>
               <td className="border p-2">{tx.category}</td>
               <td className="border p-2">${tx.amount}</td>
-              <td className={`border p-2 ${tx.type === "Income" ? "text-green-600" : "text-red-600"}`}>{tx.type}</td>
+              <td className="border p-2">{tx.name}</td>
+              
             </tr>
           ))}
         </tbody>

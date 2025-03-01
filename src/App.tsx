@@ -9,6 +9,7 @@ import Accounts from "./pages/accounts";
 import Categories from "./pages/categories";
 import Profile from "./pages/profile";
 import ContactUs from "./pages/contact";
+import "./App.css";
 
 const App: React.FC = () => {
   return (

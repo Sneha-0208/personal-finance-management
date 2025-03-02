@@ -54,3 +54,7 @@
     }
   }
   
+  /* Hide Navbar when Sidebar is Open */
+.sidebar.open ~ .flex-1 .navbar {
+  display: none;
+}

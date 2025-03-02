@@ -60,8 +60,9 @@
     cursor: pointer;
 }
 .contact-form button {
-    width: 100%;
+    width: 30%;
     padding: 12px;
+    margin: 0 auto;
     background-color: #7951e5;
     color: white;
     font-size: 16px;
@@ -70,6 +71,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+    
 }
 
 .contact-form button:hover {
@@ -79,7 +81,7 @@
 .success-message {
     text-align: center;
     font-size: 18px;
-    color: #28a745;
+    color: #62ee83;
     font-weight: bold;
     margin-top: 20px;
 }

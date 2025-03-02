@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Home, PieChart, CreditCard, List, User, Settings, Menu, X } from "lucide-react";
+import { Home, PieChart, CreditCard, List, User, Menu, X } from "lucide-react";
 import "./sidebar.css";
 
-const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+interface SidebarProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
 
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
   return (
     <>
       {/* Hamburger Icon (Only Show When Sidebar is Closed) */}
@@ -50,8 +53,8 @@ const Sidebar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/settings">
-              <Settings size={20} /> <span>Settings</span>
+            <Link to="/contact">
+              <User size={20} /> <span>Contact Us</span>
             </Link>
           </li>
         </ul>

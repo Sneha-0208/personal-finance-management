@@ -1,0 +1,174 @@
+.profile-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #210a51;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.header-summary {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    background: #382f6c;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.summary-item :hover{
+    background-color: #28a745;
+    cursor: pointer;
+}
+/* Form Styling */
+.profile-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center; /* Center-align inputs */
+}
+
+.profile-form label {
+    font-weight: 600;
+    align-self: flex-start;
+    margin-left: 50px;
+}
+
+/* Ensuring all input fields, dropdown, and password fields are of the same width */
+.full-width {
+    width: 80%; /* Adjust width to match the button */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgb(214, 213, 213);
+    color: black;
+    box-sizing: border-box;
+}
+
+.full-width:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Password Section */
+.password-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.save-password-btn {
+    width: 45%; /* Matching width with inputs */
+    padding: 12px;
+    background-color: #7951e5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-password-btn:hover {
+    background-color: rgb(147, 192, 56);
+    color: black;
+
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 10px;
+    margin-top: 20px;
+    padding-right: 10%;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 12px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.save-btn {
+    background: #1b9e3a;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #454a4e;
+}
+
+.save-btn:hover {
+    background: #136a25;
+}
+
+/* Delete Section */
+.delete-section {
+    margin-top: 20px;
+}
+
+.delete-btn {
+    background: #ef3043;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #c51324;
+}
+
+/* Confirmation Modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(229, 227, 227);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+.modal p {
+    margin-bottom: 20px;
+}

@@ -1,73 +1,98 @@
 import React, { useState } from "react";
-
-interface UserProfile {
-  name: string;
-  email: string;
-  currency: string;
-}
+import "./profile.css";
 
 const Profile: React.FC = () => {
-  const [profile, setProfile] = useState<UserProfile>({
-    name: "John Doe",
-    email: "johndoe@example.com",
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
     currency: "USD",
+    oldPassword: "",
+    newPassword: "",
   });
-  const [editMode, setEditMode] = useState(false);
-  const [updatedProfile, setUpdatedProfile] = useState(profile);
 
-  const handleUpdate = () => {
-    setProfile(updatedProfile);
-    setEditMode(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [balance, setBalance] = useState(1000);
+  const currencyRates: { [key: string]: number } = { USD: 1,
+    EUR: 0.92,
+    GBP: 0.79,
+    INR: 83.5,
+    JPY: 150.4 };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+    if (e.target.name === "currency") {
+      const rate = currencyRates[e.target.value] || 1;
+      setBalance(1000 * rate);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    setShowConfirm(true);
+  };
+
+  const confirmDeleteAccount = () => {
+    console.log("Account deleted");
+    setShowConfirm(false);
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Profile</h2>
-      <div className="border p-4 rounded-md shadow-md w-96">
-        {!editMode ? (
-          <>
-            <p><strong>Name:</strong> {profile.name}</p>
-            <p><strong>Email:</strong> {profile.email}</p>
-            <p><strong>Preferred Currency:</strong> {profile.currency}</p>
-            <button onClick={() => setEditMode(true)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-              Edit Profile
-            </button>
-          </>
-        ) : (
-          <>
-            <label className="block mt-2">Name</label>
-            <input
-              type="text"
-              value={updatedProfile.name}
-              onChange={(e) => setUpdatedProfile({ ...updatedProfile, name: e.target.value })}
-              className="border p-2 w-full"
-            />
-
-            <label className="block mt-2">Email</label>
-            <input
-              type="email"
-              value={updatedProfile.email}
-              onChange={(e) => setUpdatedProfile({ ...updatedProfile, email: e.target.value })}
-              className="border p-2 w-full"
-            />
-
-            <label className="block mt-2">Preferred Currency</label>
-            <select
-              value={updatedProfile.currency}
-              onChange={(e) => setUpdatedProfile({ ...updatedProfile, currency: e.target.value })}
-              className="border p-2 w-full"
-            >
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="INR">INR</option>
-            </select>
-
-            <button onClick={handleUpdate} className="mt-4 bg-green-500 text-white px-4 py-2 rounded">
-              Save Changes
-            </button>
-          </>
-        )}
+    <div className="profile-container">
+      <h2>Profile</h2>
+      <div className="header-summary">
+        <div className="summary-item">Expenses: {balance.toFixed(2)} {form.currency}</div>
+        <div className="summary-item">Income: {balance.toFixed(2)} {form.currency}</div>
+        <div className="summary-item">Balance: {balance.toFixed(2)} {form.currency}</div>
       </div>
+
+      <div className="profile-form">
+        <label>Preferred Currency</label>
+        <select name="currency" value={form.currency} onChange={handleChange} className="full-width">
+          <option value="USD">USD - US Dollar</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="INR">INR - Indian Rupee</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+
+        </select>
+
+        <label>Name</label>
+        <input type="text" name="name" value={form.name} onChange={handleChange} className="full-width" />
+
+        <label>Email</label>
+        <input type="email" name="email" value={form.email} onChange={handleChange} className="full-width" />
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" value={form.phone} onChange={handleChange} className="full-width" />
+
+        <div className="password-section">
+          <label>Old Password</label>
+          <input type="password" name="oldPassword" value={form.oldPassword} onChange={handleChange} className="full-width" />
+
+          <label>New Password</label>
+          <input type="password" name="newPassword" value={form.newPassword} onChange={handleChange} className="full-width" />
+
+          <button className="save-password-btn full-width">Save New Password</button>
+        </div>
+      </div>
+
+      <div className="action-buttons">
+        <button className="cancel-btn">Cancel</button>
+        <button className="save-btn">Save Changes</button>
+      </div>
+
+      <div className="delete-section">
+        <button className="delete-btn" onClick={handleDeleteClick}>Delete Account</button>
+      </div>
+
+      {showConfirm && (
+        <div className="modal">
+          <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+          <button className="cancel-btn" onClick={() => setShowConfirm(false)}>Cancel</button>
+          <button className="save-btn" onClick={confirmDeleteAccount}>Confirm</button>
+        </div>
+      )}
     </div>
   );
 };

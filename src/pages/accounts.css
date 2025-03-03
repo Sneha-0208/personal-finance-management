@@ -1,0 +1,76 @@
+.container {
+    padding: 1.5rem;
+    background-color: #33312e;
+    width: 90%;
+    margin: auto;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.account-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.account-box {
+    display: flex;
+    align-items: center;
+    background: #45423e;
+    padding: 15px;
+    border-radius: 10px;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    font-size: 2rem;
+}
+
+.account-info {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.positive {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.negative {
+    color: #E53935;
+    font-weight: bold;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.input {
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.button {
+    background-color: #ffbf00;
+    color: #333;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ffaa00;
+}

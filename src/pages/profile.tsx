@@ -39,7 +39,7 @@ const Profile: React.FC = () => {
 
   return (
     <div className="profile-container">
-      <h2>Profile</h2>
+      <h2 className="pf">Profile</h2>
       <div className="header-summary">
         <div className="summary-item">Expenses: {balance.toFixed(2)} {form.currency}</div>
         <div className="summary-item">Income: {balance.toFixed(2)} {form.currency}</div>
@@ -58,13 +58,16 @@ const Profile: React.FC = () => {
         </select>
 
         <label>Name</label>
-        <input type="text" name="name" value={form.name} onChange={handleChange} className="full-width" />
+        <input type="text" name="name" value={form.name} onChange={handleChange} className="full-width" placeholder="Enter your name"/>
+
+        <label>Gender</label>
+        <input type="text" name="name" value={form.name} onChange={handleChange} className="full-width" placeholder="Enter your gender"/>
 
         <label>Email</label>
-        <input type="email" name="email" value={form.email} onChange={handleChange} className="full-width" />
+        <input type="email" name="email" value={form.email} onChange={handleChange} className="full-width" placeholder="Enter your email-address"/>
 
         <label>Phone Number</label>
-        <input type="tel" name="phone" value={form.phone} onChange={handleChange} className="full-width" />
+        <input type="tel" name="phone" value={form.phone} onChange={handleChange} className="full-width" placeholder="Enter your phone-no."/>
 
         <div className="password-section">
           <label>Old Password</label>
@@ -78,7 +81,7 @@ const Profile: React.FC = () => {
       </div>
 
       <div className="action-buttons">
-        <button className="cancel-btn">Cancel</button>
+        {/* <button className="cancel-btn">Cancel</button> */}
         <button className="save-btn">Save Changes</button>
       </div>
 
@@ -89,10 +92,17 @@ const Profile: React.FC = () => {
       {showConfirm && (
         <div className="modal">
           <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-          <button className="cancel-btn" onClick={() => setShowConfirm(false)}>Cancel</button>
+          {/* <button className="cancel-btn" onClick={() => setShowConfirm(false)}>Cancel</button> */}
           <button className="save-btn" onClick={confirmDeleteAccount}>Confirm</button>
         </div>
       )}
+       <section className="lastquote">
+          <p>
+            "In the end, our wealth is not measured by what we own, but by the quality of our choices and the impact they have on those around us....."
+          </p>
+          <p className="writer">– Inspired by Mahatma Gandhi and modern social entrepreneurship.
+          </p>
+        </section>
     </div>
   );
 };

@@ -1,35 +1,167 @@
-import React from "react";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import React, { useState } from "react";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend,
+  Tooltip, PieChart, Pie, Cell
+} from "recharts";
+import "./analysis.css";
 
-const data = [
-  { name: "Food", value: 400 },
-  { name: "Rent", value: 1000 },
-  { name: "Entertainment", value: 300 },
-  { name: "Transport", value: 200 },
-  { name: "Savings", value: 600 },
-];
+const App: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false); // ✅ Fixed: Added useState for Notes Section
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AF19FF"];
+  const financialData = [
+    { name: "Income", users: 2000000000 },
+    { name: "Expense", users: 1500000000 },
+    { name: "Savings", users: 1000000000 },
+  ];
 
-const Analysis: React.FC = () => {
+  const expenseCategories = [
+    { name: "Baby", value: 500 },
+    { name: "Beauty", value: 800 },
+    { name: "Bills", value: 1500 },
+    { name: "Car", value: 1200 },
+    { name: "Clothing", value: 1000 },
+    { name: "Education", value: 2000 },
+    { name: "Electronics", value: 1800 },
+    { name: "Entertainment", value: 1600 },
+    { name: "Food", value: 2200 },
+    { name: "Health", value: 1300 },
+    { name: "Home", value: 1700 },
+    { name: "Insurance", value: 1400 },
+    { name: "Shopping", value: 1900 },
+    { name: "Social", value: 900 },
+    { name: "Sport", value: 1100 },
+    { name: "Tax", value: 2100 },
+    { name: "Telephone", value: 700 },
+    { name: "Transportation", value: 2300 },
+  ];
+
+  const colors = [
+    "#4CAF50", "#F44336", "#2196F3", "#FF9800", "#9C27B0", "#009688",
+    "#795548", "#FFEB3B", "#E91E63", "#3F51B5", "#8BC34A", "#607D8B",
+    "#CDDC39", "#FF5722", "#03A9F4", "#00BCD4", "#673AB7", "#FFC107"
+  ];
+
   return (
-    <div className="flex flex-col items-center justify-center p-6">
-      <h2 className="text-2xl font-bold mb-4">Expense Analysis</h2>
-      <div className="w-full h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie data={data} cx="50%" cy="50%" labelLine={false} label outerRadius={120} fill="#8884d8" dataKey="value">
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
+    <div className="app-container">
+      {/* <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
+        <button className="toggle-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
+          {sidebarOpen ? "❌" : "➡️"}
+        </button>
+        <ul>
+          <li>Dashboard</li>
+          <li>Records</li>
+          <li>Analysis</li>
+          <li>Budgets</li>
+          <li>Accounts</li>
+          <li>Profile</li>
+          <li>Settings</li>
+        </ul>
+      </div> */}
+
+      <div className={`content ${sidebarOpen ? "content-shifted" : ""}`}>
+        <section id="home">
+          <h1 className="mainheading">Welcome to Analysis Page.....</h1>
+          <h1 className="h-primary">Data Speaks, We Listen – Your Financial Overview Awaits!</h1>
+          <p>“Do not save what is left after spending, but spend what is left after saving.”</p>
+          <p className="writer"> – Warren Buffett</p>
+        </section>
+
+        {/* ✅ Fixed: Added missing isOpen useState */}
+        <div className="dropdown">
+      <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>
+        📌 Notes Section {isOpen ? "▲" : "▼"}
+      </button>
+      {isOpen && (
+        <div className="dropdown-content show">
+          <textarea placeholder="Write your notes here..." />
+        </div>
+      )}
+    </div>
+        <div className="charts-container">
+          {/* Pie Chart Row */}
+          <div className="chart-row">
+            <div className="Piechart2">
+              <PieChart width={400} height={400}>
+                <Pie
+                  dataKey="users"
+                  isAnimationActive={true}
+                  animationBegin={0}
+                  animationDuration={1200}
+                  animationEasing="ease-out"
+                  data={financialData}
+                  cx={200}
+                  cy={200}
+                  outerRadius={80}
+                  label
+                >
+                  {financialData.map((_, index) => (
+                    <Cell key={`cell-${index}`} fill={colors[index]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </div>
+
+            <div className="Piechart1">
+              <PieChart width={400} height={400}>
+                <Pie
+                  dataKey="value"
+                  isAnimationActive={true}
+                  animationBegin={0}
+                  animationDuration={1200}
+                  animationEasing="ease-in-out"
+                  data={expenseCategories}
+                  cx={200}
+                  cy={200}
+                  outerRadius={80}
+                  label
+                >
+                  {expenseCategories.map((_, index) => (
+                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </div>
+          </div>
+
+          {/* Bar Chart Row */}
+          <div className="chart-row">
+            <div className="barchart1">
+              <BarChart width={500} height={300} data={financialData} barSize={20}>
+                <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Bar dataKey="users" fill="#8884d8" background={{ fill: "#eee" }} />
+              </BarChart>
+            </div>
+
+            <div className="barchart2">
+              <BarChart width={500} height={300} data={expenseCategories} barSize={20}>
+                <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Bar dataKey="value" fill="#FF5733" background={{ fill: "#eee" }} />
+              </BarChart>
+            </div>
+          </div>
+        </div>
+
+        <section className="lastquote">
+          <p>
+            "True wealth does not lie in the things we acquire, but in the peace we find when we manage our resources wisely..."
+          </p>
+          <p className="writer">– Inspired by Aristotle and modern financial wisdom.</p>
+        </section>
       </div>
     </div>
   );
 };
 
-export default Analysis;
+export default App;
+

@@ -1,11 +1,32 @@
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
+  background-size: cover;  /* Ensures the entire area is covered */
+  background-position: center center; /* Keeps the focus on the center */
+  height: 1200px; /* Full viewport height */
+  width: 100vw;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(3px);
+}
+
 .container {
     padding: 24px;
+    background-color: none;
   }
   
   .heading {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 24px;
+    color: white;
   }
   
   .section {
@@ -27,8 +48,8 @@
   }
   
   .category-list {
-    background-color: rgb(12, 101, 55);
-    border: 1px solid #575555;
+    background: #210a51;
+    /* border: 1px solid #575555; */
     border-radius: 8px;
   }
   
@@ -37,13 +58,15 @@
     justify-content: left;
     align-items: left;
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd ;
     position: relative;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #210a51;
   }
   
-  .category-item:last-child {
+  /* .category-item:last-child {
     border-bottom: none;
-  }
+  } */
   
   .category-name {
     flex: 1;
@@ -58,8 +81,15 @@
     border-radius: 4px;
   }
   
+  .category-item:hover{
+    transform: scale(1.03);
+    /* border: none  */
+    
+    
+  }
   .options-button:hover {
     background-color: #f0f0f0;
+    
   }
   
   .dropdown {
@@ -150,4 +180,17 @@
   background-color: rgb(10, 200, 10);
 }
 
-  
+
+.section-title.income-title , .section-title.expense-title
+{
+  color: white;
+  /* color: gr; */
+}
+
+.section-title.income-title:hover, .section-title.expense-title:hover
+{
+  color: #48ec0d; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer; /* Indicate interactivity */
+  transition: all 0.3s ease-in-out;
+}

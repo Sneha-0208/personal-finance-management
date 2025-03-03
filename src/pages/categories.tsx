@@ -5,37 +5,38 @@ import "./Categories.css";
 interface Category {
   name: string;
   type: "Income" | "Expense";
+  symbol: string;
 }
 
 const initialCategories: Category[] = [
-  { name: "Salary", type: "Income" },
-  { name: "Coupons", type: "Income" },
-  { name: "Grants", type: "Income" },
-  { name: "Refunds", type: "Income" },
-  { name: "Lottery", type: "Income" },
-  { name: "Freelance", type: "Income" },
-  { name: "Sale", type: "Income" },
-  { name: "Rental", type: "Income" },
-  { name: "Awards", type: "Income" },
-  { name: "Food", type: "Expense" },
-  { name: "Rent", type: "Expense" },
-  { name: "Baby", type: "Expense" },
-  { name: "Beauty", type: "Expense" },
-  { name: "Bills", type: "Expense" },
-  { name: "Car", type: "Expense" },
-  { name: "Clothing", type: "Expense" },
-  { name: "Education", type: "Expense" },
-  { name: "Electronics", type: "Expense" },
-  { name: "Entertainment", type: "Expense" },
-  { name: "Health", type: "Expense" },
-  { name: "Home", type: "Expense" },
-  { name: "Insurance", type: "Expense" },
-  { name: "Shopping", type: "Expense" },
-  { name: "Social", type: "Expense" },
-  { name: "Sports", type: "Expense" },
-  { name: "Tax", type: "Expense" },
-  { name: "Telephone", type: "Expense" },
-  { name: "Transportation", type: "Expense" },
+  { symbol: "💰", name: "Salary", type: "Income" },
+  { symbol: "🎟️", name: "Coupons", type: "Income" },
+  { symbol: "🎓", name: "Grants", type: "Income" },
+  { symbol: "💵", name: "Refunds", type: "Income" },
+  { symbol: "🎰", name: "Lottery", type: "Income" },
+  { symbol: "🧑‍💻", name: "Freelance", type: "Income" },
+  { symbol: "🛒", name: "Sale", type: "Income" },
+  { symbol: "🏠", name: "Rental", type: "Income" },
+  { symbol: "🏆", name: "Awards", type: "Income" },
+  { symbol: "🍔", name: "Food", type: "Expense" },
+  { symbol: "🏠", name: "Rent", type: "Expense" },
+  { symbol: "🍼", name: "Baby", type: "Expense" },
+  { symbol: "💄", name: "Beauty", type: "Expense" },
+  { symbol: "💡", name: "Bills", type: "Expense" },
+  { symbol: "🚗", name: "Car", type: "Expense" },
+  { symbol: "👕", name: "Clothing", type: "Expense" },
+  { symbol: "📚", name: "Education", type: "Expense" },
+  { symbol: "📱", name: "Electronics", type: "Expense" },
+  { symbol: "🎭", name: "Entertainment", type: "Expense" },
+  { symbol: "⚕️", name: "Health", type: "Expense" },
+  { symbol: "🏡", name: "Home", type: "Expense" },
+  { symbol: "🛡️", name: "Insurance", type: "Expense" },
+  { symbol: "🛍️", name: "Shopping", type: "Expense" },
+  { symbol: "🎉", name: "Social", type: "Expense" },
+  { symbol: "⚽", name: "Sports", type: "Expense" },
+  { symbol: "💸", name: "Tax", type: "Expense" },
+  { symbol: "📞", name: "Telephone", type: "Expense" },
+  { symbol: "🚌", name: "Transportation", type: "Expense" }
 ];
 
 const Categories: React.FC = () => {
@@ -68,10 +69,14 @@ const Categories: React.FC = () => {
   const handleAddCategory = (e: React.FormEvent) => {
     e.preventDefault();
     if (newCategory.trim() === "") return;
-    setCategories([...categories, { name: newCategory.trim(), type: categoryType }]);
+  
+    // Assign a default symbol or let the user choose one
+    const defaultSymbol = "🆕"; // You can change this or add symbol selection logic
+  
+    setCategories([...categories, { symbol: defaultSymbol, name: newCategory.trim(), type: categoryType }]);
     setNewCategory("");
   };
-
+  
   return (
     <div className="container">
       <h2 className="heading">Income & Expense Categories</h2>
@@ -84,11 +89,10 @@ const Categories: React.FC = () => {
             .filter((category) => category.type === "Income")
             .map((category) => (
               <li key={category.name} className="category-item">
-                <span className="category-name">{category.name}</span>
+                <span className="category-name">{category.symbol} {category.name}</span>
                 <button onClick={() => toggleDropdown(category.name)} className="options-button">
                   <FaEllipsisV />
                 </button>
-
                 {dropdownOpen === category.name && (
                   <div className="dropdown">
                     <button onClick={() => handleEdit(category.name)} className="dropdown-button">Edit</button>
@@ -108,11 +112,10 @@ const Categories: React.FC = () => {
             .filter((category) => category.type === "Expense")
             .map((category) => (
               <li key={category.name} className="category-item">
-                <span className="category-name">{category.name}</span>
+                <span className="category-name">{category.symbol} {category.name}</span>
                 <button onClick={() => toggleDropdown(category.name)} className="options-button">
                   <FaEllipsisV />
                 </button>
-
                 {dropdownOpen === category.name && (
                   <div className="dropdown">
                     <button onClick={() => handleEdit(category.name)} className="dropdown-button">Edit</button>
@@ -123,9 +126,8 @@ const Categories: React.FC = () => {
             ))}
         </ul>
       </div>
-
-      {/* Add New Category Form */}
-      <div className="form-container">
+        {/* Add New Category Form */}
+        <div className="form-container">
         <h3 className="form-title">Add New Category</h3>
         <form onSubmit={handleAddCategory} className="form">
           <input
@@ -143,6 +145,7 @@ const Categories: React.FC = () => {
           <button type="submit" className="form-button">Add</button>
         </form>
       </div>
+
     </div>
   );
 };

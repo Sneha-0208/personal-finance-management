@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./accounts.css";
 
 interface Account {
   type: string;
@@ -6,61 +7,59 @@ interface Account {
 }
 
 const initialAccounts: Account[] = [
-  { type: "Cash", balance: 500 },
-  { type: "Bank Account", balance: 2000 },
-  { type: "Savings", balance: 3000 },
+  { type: "Card", balance: 1200 },
+  { type: "Cash", balance: -450 },
+  { type: "Savings", balance: -1200 },
 ];
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState(initialAccounts);
   const [newType, setNewType] = useState("");
-  const [newBalance, setNewBalance] = useState(0);
+  const [newBalance, setNewBalance] = useState("");
 
   const addAccount = () => {
-    if (newType && newBalance >= 0) {
-      setAccounts([...accounts, { type: newType, balance: newBalance }]);
+    if (newType.trim() !== "" && newBalance !== "") {
+      setAccounts([...accounts, { type: newType, balance: parseFloat(newBalance) }]);
       setNewType("");
-      setNewBalance(0);
+      setNewBalance("");
     }
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Accounts</h2>
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2">Account Type</th>
-            <th className="border p-2">Balance</th>
-          </tr>
-        </thead>
-        <tbody>
-          {accounts.map((account, index) => (
-            <tr key={index} className="text-center">
-              <td className="border p-2">{account.type}</td>
-              <td className="border p-2">${account.balance}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container">
+      <h2 className="title">Accounts</h2>
+      
+      <div className="account-list">
+        {accounts.map((account, index) => (
+          <div key={index} className="account-box">
+            <div className="icon">📌</div> 
+            <div className="account-info">
+              <h3>{account.type}</h3>
+              <p className={account.balance < 0 ? "negative" : "positive"}>
+                ₹{account.balance.toFixed(2)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <div className="mt-4">
-        <h3 className="text-lg font-bold">Add New Account</h3>
-        <input
-          type="text"
-          placeholder="Account Type"
-          value={newType}
-          onChange={(e) => setNewType(e.target.value)}
-          className="border p-2 mr-2"
+      <div className="form-container">
+        <h3>Add New Account</h3>
+        <input 
+          type="text" 
+          placeholder="Account Type" 
+          value={newType} 
+          onChange={(e) => setNewType(e.target.value)} 
+          className="input"
         />
-        <input
-          type="number"
-          placeholder="Initial Balance"
-          value={newBalance}
-          onChange={(e) => setNewBalance(Number(e.target.value))}
-          className="border p-2 mr-2"
+        <input 
+          type="number" 
+          placeholder="Initial Balance" 
+          value={newBalance} 
+          onChange={(e) => setNewBalance(e.target.value)} 
+          className="input"
         />
-        <button onClick={addAccount} className="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+        <button onClick={addAccount} className="button">+ Add Account</button>
       </div>
     </div>
   );

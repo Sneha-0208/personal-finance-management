@@ -10,6 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 20px;
+    border: 2px solid black;
 }
 
 .contact-title {
@@ -48,16 +50,19 @@
 .contact-form textarea:focus {
     border-color: #dfe5eb;
     outline: none;
+    border-radius: 5px;
 }
 
 .contact-form textarea {
     height: 120px;
     resize: none;
+    border-radius: 20px;
 }
 .contact-form select {
     width: 501.6px;
     height: 44px;
     cursor: pointer;
+      /* border-radius: 20px; */
 }
 .contact-form button {
     width: 30%;
@@ -71,12 +76,30 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+    border-radius: 10px;
     
 }
 
-.contact-form button:hover {
-    background-color: #b5430e;
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, 
+p:hover, li:hover, label:hover, input:hover, textarea:hover, 
+select:hover {
+  color: #48ec0d; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer; /* Indicate interactivity */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
 }
+
+.dropdown-btn:hover {
+    color: #000000; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; /* Indicate interactivity */
+  }
+
+.btn:hover {
+    color: #000000; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; /* Indicate interactivity */
+  }
 
 .success-message {
     text-align: center;
@@ -84,4 +107,68 @@
     color: #62ee83;
     font-weight: bold;
     margin-top: 20px;
+}
+
+.contact-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      
+        background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
+        background-size: cover;  /* Ensures the entire area is covered */
+        background-position: center center; /* Keeps the focus on the center */
+        height: 1200px; /* Full viewport height */
+        width: 100vw;
+        z-index: -1;
+        opacity: 0.4;
+        filter: blur(3px);
+      }
+
+.chat{
+    border: 2px solid black;
+    max-width: 500px; /* Increased width for better spacing */
+    width: 90%; /* Responsive width */
+    margin: 50px auto;
+    padding: 30px; /* Increased padding */
+    background: #210a51;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+.btn{
+    width: 30%;
+    padding: 12px;
+    margin: 0 auto;
+    background-color: #7951e5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.middlebox{
+    display: flex;
+}
+.image{
+    max-width: 500px; /* Increased width for better spacing */
+    width: 90%; /* Responsive width */
+    margin: 50px auto;
+    padding: 30px; /* Increased padding */
+    background: #210a51;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+      background: url('/img/girl-6682881_1280.jpg') no-repeat center center / cover;
+  background-size: cover;
+  border: 2px solid black;
+  /* filter: blur(1px); */
 }

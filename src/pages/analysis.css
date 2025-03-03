@@ -1,0 +1,152 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+}
+
+body {
+  /* font-family: "Playwrite IN", cursive;  */
+}
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  height: 100vh;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 50px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.content-shifted {
+  margin-left: 250px;
+}
+
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+
+.app-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
+  background-size: cover;  /* Ensures the entire area is covered */
+  background-position: center center; /* Keeps the focus on the center */
+  height: 1200px; /* Full viewport height */
+  width: 100vw;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(3px);
+}
+
+
+.charts-container {
+  display: flex;
+  flex-direction: column; /* Stacks Pie & Bar charts vertically */
+  align-items: center; /* Centers each row */
+  gap: 30px; /* Space between Pie Chart and Bar Chart sections */
+  width: 100%;
+}
+
+.chart-row {
+  display: flex;
+  justify-content: center; /* Centers charts in each row */
+  gap: 40px; /* Space between two charts */
+  width: 100%;
+}
+
+.Piechart1, .Piechart2, .barchart1, .barchart2 {
+  background-color:  rgb(206, 200, 193);
+  border: 2px solid rgb(0, 0, 0);
+  width: 500px; /* Ensure equal width */
+  min-height: 400px; /* Prevent collapse */
+  display: flex;
+  justify-content: center; /* Centers the charts inside */
+  align-items: center; /* Vertically centers */
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.Piechart1 svg, .Piechart2 svg, .barchart1 svg, .barchart2 svg {
+  width: 100%;
+  height: 100px;
+}
+
+ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, li:hover{
+  color: #48ec0d; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer; /* Indicate interactivity */
+}
+
+.mainheading , .h-primary
+{
+  font-weight: bolder;
+  font-size: 40px;
+  color: white;
+}
+
+p{
+  font-size: 25px;
+}
+.writer
+{
+  font-size: 15px;
+  font-family: "Playwrite IN", cursive;
+}
+.dropdown-btn
+{
+  font-family: "Playwrite IN", cursive;
+  width: 80px;
+  background-color: rgb(206, 200, 193);
+  border: 2px solid rgb(0, 0, 0);
+  margin: 1px;
+  color: black;
+}
+
+
+.dropdown-btn:hover {
+  color: #9a3ecb; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly increase size */
+  cursor: pointer; /* Indicate interactivity */
+}

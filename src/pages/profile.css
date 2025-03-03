@@ -1,5 +1,5 @@
 .profile-container {
-    max-width: 500px;
+    max-width: 700px;
     margin: 50px auto;
     padding: 20px;
     background: #210a51;
@@ -9,9 +9,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 20px;
+}
+
+.profile-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
+    background-size: cover;  /* Ensures the entire area is covered */
+    background-position: center center; /* Keeps the focus on the center */
+    height: 1200px; /* Full viewport height */
+    width: 100vw;
+    z-index: -1;
+    opacity: 0.4;
+    filter: blur(3px);
+  }
+
+.pf{
+ color: white;
 }
 
 h2 {
+    color: white;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -84,7 +108,7 @@ h2 {
     font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }
@@ -96,13 +120,15 @@ h2 {
 }
 
 /* Buttons */
-.action-buttons {
+.action-buttons , .delete-section{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
     gap: 10px;
     margin-top: 20px;
-    padding-right: 10%;
+    /* padding-right: 10%; */
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 .cancel-btn,
@@ -123,20 +149,25 @@ h2 {
 .save-btn {
     background: #1b9e3a;
     color: white;
+    border-radius: 10px;
 }
 
 .cancel-btn:hover {
-    background: #454a4e;
+    color: #000000; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; 
 }
 
 .save-btn:hover {
-    background: #136a25;
+    color: #000000; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; 
 }
 
 /* Delete Section */
-.delete-section {
+/* .delete-section {
     margin-top: 20px;
-}
+} */
 
 .delete-btn {
     background: #ef3043;
@@ -150,7 +181,9 @@ h2 {
 }
 
 .delete-btn:hover {
-    background: #c51324;
+    color: #000000; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; 
 }
 
 /* Confirmation Modal */
@@ -171,4 +204,11 @@ h2 {
 
 .modal p {
     margin-bottom: 20px;
+}
+
+.summary-item:hover{
+    color: #48ec0d; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size */
+    cursor: pointer; /* Indicate interactivity */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
 }

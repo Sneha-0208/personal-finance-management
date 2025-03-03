@@ -98,7 +98,7 @@ const Profile: React.FC = () => {
       )}
        <section className="lastquote">
           <p>
-            "In the end, our wealth is not measured by what we own, but by the quality of our choices and the impact they have on those around us....."
+            "In the end, our wealth is not measured by what we own, but by the quality of our choices and the impact they have on those around us..."
           </p>
           <p className="writer">– Inspired by Mahatma Gandhi and modern social entrepreneurship.
           </p>

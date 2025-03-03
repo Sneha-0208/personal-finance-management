@@ -1,0 +1,138 @@
+/* General styling */
+.records-container {
+    font-family: "Arial", sans-serif;
+    background: #2f2f2f;
+    color: #fff;
+    padding-bottom: 70px;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #3d3d3d;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .menu-btn, .search-btn {
+    background: none;
+    border: none;
+    color: #ffc107;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  
+  /* Summary section */
+  .summary {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background: #414141;
+    font-size: 16px;
+  }
+  
+  .summary-item {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .expense { color: #ff4d4d; }
+  .income { color: #4caf50; }
+  .total { color: #00c853; }
+  
+  /* Transactions */
+  .transactions {
+    padding: 10px;
+  }
+  
+  .transaction {
+    margin-bottom: 15px;
+  }
+  
+  .transaction-date {
+    font-weight: bold;
+    padding: 5px 0;
+    border-bottom: 1px solid #555;
+  }
+  
+  .transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #3d3d3d;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .icon {
+    font-size: 24px;
+  }
+  
+  .details {
+    flex-grow: 1;
+    padding-left: 10px;
+  }
+  
+  .category {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .payment {
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  .amount {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .expense-text { color: #ff4d4d; }
+  .income-text { color: #4caf50; }
+  
+  /* Floating Add Button */
+  .add-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #ffc107;
+    color: black;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  
+  /* Bottom Navigation */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #3d3d3d;
+    padding: 10px 0;
+  }
+  
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #bbb;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .nav-btn.active {
+    color: #ffc107;
+    font-weight: bold;
+  }
+  

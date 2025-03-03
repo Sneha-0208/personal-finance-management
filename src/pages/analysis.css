@@ -150,3 +150,13 @@ p{
   transform: scale(1.05); /* Slightly increase size */
   cursor: pointer; /* Indicate interactivity */
 }
+.dropdown{
+  position: absolute;
+    right: 16px;
+    top: 29px;
+    width: 98px;
+    background-color: white;
+    border: 1px solid #5d5b5b;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}

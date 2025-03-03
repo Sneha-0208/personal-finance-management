@@ -1,71 +1,95 @@
 .budget-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #2f2f2f;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  .budget-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .budget-card {
-    background-color: #444;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  .category-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-  }
-  
-  .icon {
-    font-size: 24px;
-  }
-  
-  .name {
-    font-weight: bold;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    height: 8px;
-    background-color: #666;
-    border-radius: 4px;
-    margin-top: 5px;
-    position: relative;
-  }
-  
-  .progress {
-    height: 8px;
-    border-radius: 4px;
-    transition: width 0.3s;
-  }
-  
-  button {
-    background-color: #ffcc00;
-    color: black;
-    border: none;
-    padding: 8px 12px;
-    margin-top: 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background-color: #e6b800;
-  }
-  
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #210a51;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.budget-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.budget-card {
+  width: 250px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress {
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.last p {
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+}
+
+.hk
+{
+  color:  black;
+}
+
+.back::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
+  background-size: cover;  /* Ensures the entire area is covered */
+  height: 4500px; /* Full viewport height */
+  width: 100vw;
+  z-index: -1;
+  opacity: 0.4;
+  /* filter: blur(3px); */
+}
+
+.bhu{
+  background-color: #7951e5;
+  color: white;
+}

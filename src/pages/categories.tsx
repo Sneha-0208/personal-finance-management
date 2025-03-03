@@ -147,7 +147,13 @@ const Categories: React.FC = () => {
           <button type="submit" className="form-button">Add</button>
         </form>
       </div>
+      <div className="last">
+      <p> A successful life is built on the foundations of both discipline and freedom—discipline in managing our resources wisely and freedom in using those resources to foster personal growth, innovation, and meaningful experiences...
+      </p>
+      <p className="writer">– Inspired by Stephen Covey’s philosophy of time and resource management.
 
+      </p>
+      </div>
     </div>
   );
 };

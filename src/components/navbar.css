@@ -1,16 +1,32 @@
 /* navbar.css */
-/* navbar.css */
+.navbar {
+  width: 100vw;  /* Full viewport width */
+  right: 0;
+  top: 0px;
+  position: absolute;
+}
+
 .navbar {
   background-color: #0944e6; /* Deep Blue */
   padding: 15px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.navbar {
+  background-color: #0944e6; /* Deep Blue */
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* position: fixed; */
+  z-index: 1000;
+  overflow-x: hidden;
+}
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 

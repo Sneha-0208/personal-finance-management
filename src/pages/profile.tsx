@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./profile.css";
 
 const Profile: React.FC = () => {
@@ -13,11 +14,15 @@ const Profile: React.FC = () => {
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [balance, setBalance] = useState(1000);
-  const currencyRates: { [key: string]: number } = { USD: 1,
+  const navigate = useNavigate();
+
+  const currencyRates: { [key: string]: number } = {
+    USD: 1,
     EUR: 0.92,
     GBP: 0.79,
     INR: 83.5,
-    JPY: 150.4 };
+    JPY: 150.4,
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -37,6 +42,11 @@ const Profile: React.FC = () => {
     setShowConfirm(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Clear authentication token
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
     <div className="profile-container">
       <h2 className="pf">Profile</h2>
@@ -54,7 +64,6 @@ const Profile: React.FC = () => {
           <option value="GBP">GBP - British Pound</option>
           <option value="INR">INR - Indian Rupee</option>
           <option value="JPY">JPY - Japanese Yen</option>
-
         </select>
 
         <label>Name</label>
@@ -81,10 +90,13 @@ const Profile: React.FC = () => {
       </div>
 
       <div className="action-buttons">
-        {/* <button className="cancel-btn">Cancel</button> */}
         <button className="save-btn">Save Changes</button>
       </div>
 
+      <div className="logout-section">
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+      </div>
+      
       <div className="delete-section">
         <button className="delete-btn" onClick={handleDeleteClick}>Delete Account</button>
       </div>
@@ -92,17 +104,16 @@ const Profile: React.FC = () => {
       {showConfirm && (
         <div className="modal">
           <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-          {/* <button className="cancel-btn" onClick={() => setShowConfirm(false)}>Cancel</button> */}
           <button className="save-btn" onClick={confirmDeleteAccount}>Confirm</button>
         </div>
       )}
-       <section className="lastquote">
-          <p>
-            "In the end, our wealth is not measured by what we own, but by the quality of our choices and the impact they have on those around us....."
-          </p>
-          <p className="writer">– Inspired by Mahatma Gandhi and modern social entrepreneurship.
-          </p>
-        </section>
+
+      <section className="lastquote">
+        <p>
+          "In the end, our wealth is not measured by what we own, but by the quality of our choices and the impact they have on those around us....."
+        </p>
+        <p className="writer">– Inspired by Mahatma Gandhi and modern social entrepreneurship.</p>
+      </section>
     </div>
   );
 };

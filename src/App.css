@@ -5,11 +5,15 @@
   text-align: center;
 }
 
-/* Ensure scrolling works globally */
 html, body {
-  height: 100%;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  overflow: auto !important;
-  min-height: 100vh;
+  overflow-x: hidden; /* Hides horizontal scrolling */
+  box-sizing: border-box;
 }
 
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}

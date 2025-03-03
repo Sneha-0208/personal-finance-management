@@ -19,19 +19,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-  
     background: url('/img/ai-generated-8490532_1280.png') no-repeat center center / cover;
-    background-size: cover;  /* Ensures the entire area is covered */
-    background-position: center center; /* Keeps the focus on the center */
-    height: 1200px; /* Full viewport height */
+    background-size: cover;
+    background-position: center center;
+    height: 1200px;
     width: 100vw;
     z-index: -1;
     opacity: 0.4;
     filter: blur(3px);
-  }
+}
 
-.pf{
- color: white;
+.pf {
+    color: white;
 }
 
 h2 {
@@ -55,28 +54,28 @@ h2 {
     font-size: 14px;
 }
 
-.summary-item :hover{
-    background-color: #28a745;
+.summary-item:hover {
+    color: black;
+    background-color: #5d635e;
     cursor: pointer;
 }
-/* Form Styling */
+
 .profile-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: center; /* Center-align inputs */
+    align-items: center;
 }
 
 .profile-form label {
     font-weight: 600;
     align-self: flex-start;
-    margin-left: 50px;
+    margin-left: 62px;
 }
 
-/* Ensuring all input fields, dropdown, and password fields are of the same width */
 .full-width {
-    width: 80%; /* Adjust width to match the button */
+    width: 80%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -91,24 +90,24 @@ h2 {
     outline: none;
 }
 
-/* Password Section */
 .password-section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
     align-items: center;
+    margin-top: 20px;
 }
 
 .save-password-btn {
-    width: 45%; /* Matching width with inputs */
+    width: 35%;
     padding: 12px;
     background-color: #7951e5;
     color: white;
     font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }
@@ -116,19 +115,35 @@ h2 {
 .save-password-btn:hover {
     background-color: rgb(147, 192, 56);
     color: black;
-
 }
 
-/* Buttons */
-.action-buttons , .delete-section{
+.action-buttons, .delete-section {
     display: flex;
     justify-content: center;
     width: 100%;
     gap: 10px;
     margin-top: 20px;
-    /* padding-right: 10%; */
+    border-radius: 12px;
+}
+
+.logout-btn {
+    background: #53239b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
     margin-top: 20px;
-    border-radius: 10px;
+}
+
+.logout-btn:hover {
+    background: #6b21a8;
+    color: #fff;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .cancel-btn,
@@ -147,27 +162,18 @@ h2 {
 }
 
 .save-btn {
-    background: #1b9e3a;
+    background: #14b539;
     color: white;
     border-radius: 10px;
 }
 
-.cancel-btn:hover {
-    color: #000000; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly increase size */
-    cursor: pointer; 
-}
-
+.cancel-btn:hover,
 .save-btn:hover {
-    color: #000000; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly increase size */
-    cursor: pointer; 
+    color: #000000;
+    background-color: #48ec0d;
+    transform: scale(1.05);
+    cursor: pointer;
 }
-
-/* Delete Section */
-/* .delete-section {
-    margin-top: 20px;
-} */
 
 .delete-btn {
     background: #ef3043;
@@ -176,17 +182,16 @@ h2 {
     border: none;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
 }
 
 .delete-btn:hover {
-    color: #000000; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly increase size */
-    cursor: pointer; 
+    background-color: #850808;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
-/* Confirmation Modal */
 .modal {
     position: fixed;
     top: 50%;
@@ -206,9 +211,9 @@ h2 {
     margin-bottom: 20px;
 }
 
-.summary-item:hover{
-    color: #48ec0d; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly increase size */
-    cursor: pointer; /* Indicate interactivity */
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+.summary-item:hover {
+    color: #161715;
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }

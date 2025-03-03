@@ -4,9 +4,12 @@
     padding: 20px;
     text-align: center;
     position: relative;
-    bottom: 0;
-    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 20000px;
     font-size: 14px;
+    
 }
 
 .footer-container {
@@ -14,6 +17,9 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    left: 0px;
+    padding-left: 0px;
+    width: 100%;
 }
 
 .footer-links {

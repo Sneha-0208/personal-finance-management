@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
-import Footer from "./components/footer"; // Import Footer
+import Footer from "./components/footer";
 import Records from "./pages/records";
 import Analysis from "./pages/analysis";
 import Budgets from "./pages/budgets";
@@ -12,6 +12,8 @@ import Profile from "./pages/profile";
 import ContactUs from "./pages/contact";
 import TermsOfService from "./pages/terms";
 import PrivacyPolicy from "./pages/privacy";
+import Login from "./pages/login"; // Import Login Page
+import Register from "./pages/register"; // Import Registration Page
 import "./App.css";
 
 const App: React.FC = () => {
@@ -20,10 +22,15 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="flex h-screen flex-col">
-        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+        {/* Hide Sidebar and Navbar for Login/Register Pages */}
+        {window.location.pathname !== "/login" && window.location.pathname !== "/register" && (
+          <>
+            <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+            {!isSidebarOpen && <Navbar />}
+          </>
+        )}
+
         <div className="flex-1 flex flex-col">
-          {/* Hide Navbar when Sidebar is open */}
-          {!isSidebarOpen && <Navbar />}
           <div className="p-4 overflow-auto flex-grow">
             <Routes>
               <Route path="/" element={<Records />} />
@@ -35,9 +42,13 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </div>
-          <Footer />
+
+          {/* Hide Footer for Login/Register Pages */}
+          {window.location.pathname !== "/login" && window.location.pathname !== "/register" && <Footer />}
         </div>
       </div>
     </Router>

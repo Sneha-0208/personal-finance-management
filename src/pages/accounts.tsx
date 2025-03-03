@@ -26,7 +26,6 @@ const Accounts: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="container">
       <h2 className="title">Accounts</h2>
       
@@ -61,42 +60,6 @@ const Accounts: React.FC = () => {
           className="input"
         />
         <button onClick={addAccount} className="button">+ Add Account</button>
-=======
-    <div className="accounts-container">
-      <h2 className="heading">Accounts</h2>
-      <table className="account-table">
-        <thead>
-          <tr>
-            <th>Account Type</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody>
-          {accounts.map((account, index) => (
-            <tr key={index}>
-              <td>{account.type}</td>
-              <td>${account.balance}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="add-account-form">
-        <h3>Add New Account</h3>
-        <input
-          type="text"
-          placeholder="Account Type"
-          value={newType}
-          onChange={(e) => setNewType(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Initial Balance"
-          value={newBalance}
-          onChange={(e) => setNewBalance(Number(e.target.value))}
-        />
-        <button onClick={addAccount}>Add</button>
->>>>>>> tarang
       </div>
     </div>
   );

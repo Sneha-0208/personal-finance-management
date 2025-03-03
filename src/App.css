@@ -5,3 +5,11 @@
   text-align: center;
 }
 
+/* Ensure scrolling works globally */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: auto !important;
+  min-height: 100vh;
+}
+

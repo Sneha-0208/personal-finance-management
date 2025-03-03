@@ -151,6 +151,7 @@
   background-color: #2b2b3c;
   color: white;
   outline: none;
+  height: 26px;
 }
 
 /* Select Dropdown */
@@ -200,4 +201,5 @@
 
 .ctgry{
   width: 200px;
+  height: 42.4px;
 }

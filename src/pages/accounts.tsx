@@ -26,14 +26,14 @@ const Accounts: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="container">
       <h2 className="title">Accounts</h2>
-      
+
+      {/* Account List Section */}
       <div className="account-list">
         {accounts.map((account, index) => (
           <div key={index} className="account-box">
-            <div className="icon">📌</div> 
+            <div className="icon">📌</div>
             <div className="account-info">
               <h3>{account.type}</h3>
               <p className={account.balance < 0 ? "negative" : "positive"}>
@@ -44,26 +44,7 @@ const Accounts: React.FC = () => {
         ))}
       </div>
 
-      <div className="form-container">
-        <h3>Add New Account</h3>
-        <input 
-          type="text" 
-          placeholder="Account Type" 
-          value={newType} 
-          onChange={(e) => setNewType(e.target.value)} 
-          className="input"
-        />
-        <input 
-          type="number" 
-          placeholder="Initial Balance" 
-          value={newBalance} 
-          onChange={(e) => setNewBalance(e.target.value)} 
-          className="input"
-        />
-        <button onClick={addAccount} className="button">+ Add Account</button>
-=======
-    <div className="accounts-container">
-      <h2 className="heading">Accounts</h2>
+      {/* Account Table Section */}
       <table className="account-table">
         <thead>
           <tr>
@@ -75,28 +56,32 @@ const Accounts: React.FC = () => {
           {accounts.map((account, index) => (
             <tr key={index}>
               <td>{account.type}</td>
-              <td>${account.balance}</td>
+              <td className={account.balance < 0 ? "negative" : "positive"}>
+                ₹{account.balance.toFixed(2)}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className="add-account-form">
+      {/* Add Account Form */}
+      <div className="form-container">
         <h3>Add New Account</h3>
         <input
           type="text"
           placeholder="Account Type"
           value={newType}
           onChange={(e) => setNewType(e.target.value)}
+          className="input"
         />
         <input
           type="number"
           placeholder="Initial Balance"
           value={newBalance}
-          onChange={(e) => setNewBalance(Number(e.target.value))}
+          onChange={(e) => setNewBalance(e.target.value)}
+          className="input"
         />
-        <button onClick={addAccount}>Add</button>
->>>>>>> tarang
+        <button onClick={addAccount} className="button">+ Add Account</button>
       </div>
     </div>
   );

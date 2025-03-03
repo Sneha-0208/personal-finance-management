@@ -130,7 +130,8 @@ const Categories: React.FC = () => {
         <div className="form-container">
         <h3 className="form-title">Add New Category</h3>
         <form onSubmit={handleAddCategory} className="form">
-          <input
+          <div className="ctgry">
+          <input 
             type="text"
             placeholder="Category name"
             value={newCategory}
@@ -138,6 +139,7 @@ const Categories: React.FC = () => {
             className="form-input"
             required
           />
+          </div>
           <select value={categoryType} onChange={(e) => setCategoryType(e.target.value as "Income" | "Expense")} className="form-select">
             <option value="Income">Income</option>
             <option value="Expense">Expense</option>

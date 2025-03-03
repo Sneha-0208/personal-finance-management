@@ -105,7 +105,7 @@
   
   .dropdown-button {
     width: 100%;
-    padding: 8px 16px;
+    padding: 8px 16px; 
     font-size: 0.875rem;
     text-align: left;
     border: none;
@@ -166,18 +166,21 @@
 
 /* Add Button */
 .form-button {
-  padding: 8px 16px;
-  background-color: rgb(19, 243, 19);
-  color: black;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s ease-in-out;
+  width: 45%; /* Matching width with inputs */
+    padding: 12px;
+    background-color: #7951e5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
 
 .form-button:hover {
-  background-color: rgb(10, 200, 10);
+  background-color: rgb(147, 192, 56);
+    color: black;
 }
 
 
@@ -193,4 +196,8 @@
   transform: scale(1.05); /* Slightly increase size */
   cursor: pointer; /* Indicate interactivity */
   transition: all 0.3s ease-in-out;
+}
+
+.ctgry{
+  width: 200px;
 }

@@ -1,54 +1,54 @@
-# React + TypeScript + Vite
+Personal Finance Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📌 Project Overview
+Personal Finance Management is a MERN stack-based web application that helps users track their income and expenses, analyze financial trends, set budgets, and manage accounts efficiently.
 
-Currently, two official plugins are available:
+🚀 Features Implemented
+- **Records Management**: Track expenses and income by date and category.
+- **Financial Analysis**: Visual representation of spending patterns with charts.
+- **Budgeting**: Set and monitor category-wise budget limits.
+- **Account Management**: Manage cash, cards, and savings accounts.
+- **Custom Categories**: Add new income and expense categories.
+- **User Profile**: Manage user profile information.
+- **Contact Us**: Get in touch with the support team.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 Hosted Link
+🔗 [Live Demo](https://sneha-0208.github.io/personal-finance-management/)
 
-## Expanding the ESLint configuration
+🛠️ Technologies Used
+- **Frontend**: React.js, TypeScript, Vite, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **State Management**: Context API / Redux (if used)
+- **Authentication**: JWT (if implemented)
+- **Charts & Graphs**: Recharts / Chart.js
+- **Hosting**: GitHub Pages (Frontend), Render / Vercel (Backend)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🛠 Setup Instructions
+1. Clone the repository:
+   ```
+   git clone https://github.com/Sneha-0208/personal-finance-management.git
+   ```
+2. Navigate to the project folder:
+   ```
+   cd personal-finance-management
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   npm run dev
+   ```
+5. To deploy, run:
+   ```
+   npm run build
+   npm run deploy
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+🤝 Contributing
+Feel free to open issues or submit pull requests to improve this project!
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+📜 License
+This project is licensed under the MIT License.

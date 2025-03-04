@@ -1,105 +1,143 @@
-import React, { useState } from "react";
-import categories from "./categories";
+import React, { useState, useEffect } from "react";
+import "./budgets.css";
 
-interface Budget {
-  category: string;
-  limit: number;
-  isSet: boolean;
+interface Category {
+  id: number;
+  name: string;
+  icon: string;
+  type: "Income" | "Expense";
 }
 
-const Budgets: React.FC = () => {
-  const [budgets, setBudgets] = useState<Budget[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [budgetLimit, setBudgetLimit] = useState("");
-  const [editingCategory, setEditingCategory] = useState<string | null>(null);
+interface Budget {
+  limit: number;
+  spent: number;
+}
 
-  const handleSetBudget = () => {
-    if (!selectedCategory || !budgetLimit) return;
-    setBudgets((prevBudgets) => {
-      const updatedBudgets = prevBudgets.map((b) =>
-        b.category === selectedCategory ? { ...b, limit: Number(budgetLimit), isSet: true } : b
-      );
-      return prevBudgets.some((b) => b.category === selectedCategory)
-        ? updatedBudgets
-        : [...prevBudgets, { category: selectedCategory, limit: Number(budgetLimit), isSet: true }];
+const categories: Category[] = [
+  { id: 1, icon: "💰", name: "Salary", type: "Income" },
+  { id: 2, icon: "🎟️", name: "Coupons", type: "Income" },
+  { id: 3, icon: "🎓", name: "Grants", type: "Income" },
+  { id: 4, icon: "💵", name: "Refunds", type: "Income" },
+  { id: 5, icon: "🎰", name: "Lottery", type: "Income" },
+  { id: 6, icon: "🧑‍💻", name: "Freelance", type: "Income" },
+  { id: 7, icon: "🛒", name: "Sale", type: "Income" },
+  { id: 8, icon: "🏠", name: "Rental", type: "Income" },
+  { id: 9, icon: "🏆", name: "Awards", type: "Income" },
+  { id: 10, icon: "🍔", name: "Food", type: "Expense" },
+  { id: 11, icon: "🏠", name: "Rent", type: "Expense" },
+  { id: 12, icon: "🍼", name: "Baby", type: "Expense" },
+  { id: 13, icon: "💄", name: "Beauty", type: "Expense" },
+  { id: 14, icon: "💡", name: "Bills", type: "Expense" },
+  { id: 15, icon: "🚗", name: "Car", type: "Expense" },
+  { id: 16, icon: "👕", name: "Clothing", type: "Expense" },
+  { id: 17, icon: "📚", name: "Education", type: "Expense" },
+  { id: 18, icon: "📱", name: "Electronics", type: "Expense" },
+  { id: 19, icon: "🎭", name: "Entertainment", type: "Expense" },
+  { id: 20, icon: "⚕️", name: "Health", type: "Expense" },
+  { id: 21, icon: "🏡", name: "Home", type: "Expense" },
+  { id: 22, icon: "🛡️", name: "Insurance", type: "Expense" },
+  { id: 23, icon: "🛍️", name: "Shopping", type: "Expense" },
+  { id: 24, icon: "🎉", name: "Social", type: "Expense" },
+  { id: 25, icon: "⚽", name: "Sports", type: "Expense" },
+  { id: 26, icon: "💸", name: "Tax", type: "Expense" },
+  { id: 27, icon: "📞", name: "Telephone", type: "Expense" },
+  { id: 28, icon: "🚌", name: "Transportation", type: "Expense" },
+];
+
+const BudgetPage: React.FC = () => {
+  const [budgets, setBudgets] = useState<{ [key: number]: Budget }>({});
+
+  useEffect(() => {
+    const storedBudgets = localStorage.getItem("budgets");
+    let parsedBudgets: { [key: number]: Budget } = storedBudgets
+      ? JSON.parse(storedBudgets)
+      : {};
+
+    const updatedBudgets: { [key: number]: Budget } = {};
+    categories.forEach((category) => {
+      updatedBudgets[category.id] = parsedBudgets[category.id] || { limit: 0, spent: 0 };
     });
-    setBudgetLimit("");
-    setEditingCategory(null);
+
+    setBudgets(updatedBudgets);
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(budgets).length > 0) {
+      localStorage.setItem("budgets", JSON.stringify(budgets));
+    }
+  }, [budgets]);
+
+  const handleSetBudget = (categoryId: number) => {
+    const limit = parseFloat(prompt("Enter Budget Limit:") || "0");
+    if (!isNaN(limit) && limit > 0) {
+      setBudgets((prev) => ({
+        ...prev,
+        [categoryId]: { limit, spent: 0 },
+      }));
+    }
   };
 
-  const handleEditBudget = (category: string, limit: number) => {
-    setSelectedCategory(category);
-    setBudgetLimit(limit.toString());
-    setEditingCategory(category);
-  };
+  const handleResetBudget = (categoryId: number) => {
+    if (!budgets[categoryId]) return;
 
-  const handleDeleteBudget = (category: string) => {
-    setBudgets((prevBudgets) => prevBudgets.filter((b) => b.category !== category));
+    const limit = parseFloat(prompt("Enter New Budget Limit:") || "0");
+    if (!isNaN(limit) && limit > 0) {
+      setBudgets((prev) => ({
+        ...prev,
+        [categoryId]: { limit, spent: prev[categoryId].spent },
+      }));
+    }
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Set Your Budget</h2>
-      <div className="mb-4 flex items-center gap-2">
-        <select
-          className="border p-2"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="" disabled>Select Category</option>
-          {categories.map((category: string) => (
-            <option key={category} value={category}>{category}</option>
-          ))}
-        </select>
-        <input
-          type="number"
-          placeholder="Enter Budget"
-          value={budgetLimit}
-          onChange={(e) => setBudgetLimit(e.target.value)}
-          className="border p-2"
-        />
-        <button
-          onClick={handleSetBudget}
-          disabled={!selectedCategory || !budgetLimit}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          {editingCategory ? "Update Budget" : "Set Budget"}
-        </button>
-      </div>
+    <div className="back">
+      <div className="budget-container">
+        <h2>Budget Management</h2>
+        <div className="budget-list">
+          {categories.map((category) => {
+            const budget = budgets[category.id] || { limit: 0, spent: 0 };
+            return (
+              <div key={category.id} className="budget-card">
+                <div className="category-header">
+                  <span className="icon">{category.icon}</span>
+                  <span className="category-name">{category.name}</span>
+                </div>
 
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2">Category</th>
-            <th className="border p-2">Budget Limit</th>
-            <th className="border p-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {budgets.map((budget) => (
-            <tr key={budget.category} className="text-center">
-              <td className="border p-2">{budget.category}</td>
-              <td className="border p-2">${budget.limit}</td>
-              <td className="border p-2">
-                <button
-                  onClick={() => handleEditBudget(budget.category, budget.limit)}
-                  className="bg-yellow-500 text-white px-2 py-1 rounded mr-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDeleteBudget(budget.category)}
-                  className="bg-red-500 text-white px-2 py-1 rounded"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <p className="hk">Limit: ₹{budget.limit.toFixed(2)}</p>
+                <p className="hk">Spent: ₹{budget.spent.toFixed(2)}</p>
+                <p className="hk">
+                  Remaining:{" "}
+                  <span className={budget.spent > budget.limit ? "over-budget" : "under-budget"}>
+                    ₹{(budget.limit - budget.spent).toFixed(2)}
+                  </span>
+                </p>
+
+                <div className="progress-bar">
+                  <div
+                    className="progress"
+                    style={{
+                      width: `${(budget.spent / (budget.limit || 1)) * 100}%`,
+                      backgroundColor: budget.spent > budget.limit ? "red" : "green",
+                    }}
+                  ></div>
+                </div>
+
+                {budget.limit > 0 ? (
+                  <button onClick={() => handleResetBudget(category.id)} className="bhu">
+                    Reset Budget
+                  </button>
+                ) : (
+                  <button onClick={() => handleSetBudget(category.id)} className="bhu">
+                    Set Budget
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Budgets;
+export default BudgetPage;

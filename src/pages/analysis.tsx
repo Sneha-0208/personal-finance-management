@@ -8,7 +8,7 @@ import "./analysis.css";
 const App: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isOpen, setIsOpen] = useState(false); // ✅ Fixed: Added useState for Notes Section
-
+  console.log(setSidebarOpen);
   const financialData = [
     { name: "Income", users: 2000000000 },
     { name: "Expense", users: 1500000000 },
